@@ -303,7 +303,7 @@ namespace WindowsFormsApp3
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(597, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(525, 188);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(107, 107);
             this.pictureBox1.TabIndex = 24;
@@ -449,7 +449,7 @@ namespace WindowsFormsApp3
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(214, 494);
+            this.label2.Location = new System.Drawing.Point(92, 490);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 24);
             this.label2.TabIndex = 38;
@@ -459,7 +459,7 @@ namespace WindowsFormsApp3
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(891, 563);
+            this.ClientSize = new System.Drawing.Size(697, 563);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.label4);

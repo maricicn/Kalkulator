@@ -163,7 +163,7 @@ namespace WindowsFormsApp3
                 {
                     case "+": 
                         ukupno = rb1 + rb2;
-                        if(ukupno > 3999 || ukupno < 0)
+                        if(ukupno > 3999 || ukupno < 1)
                         {
                             textBox3.Text = ukupno.ToString();
                             label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
@@ -175,7 +175,7 @@ namespace WindowsFormsApp3
                         break;
                     case "-":
                         ukupno = rb1 - rb2;
-                        if (ukupno > 3999 || ukupno < 0)
+                        if (ukupno > 3999 || ukupno < 1)
                         {
                             textBox3.Text = ukupno.ToString();
                             label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
@@ -187,7 +187,7 @@ namespace WindowsFormsApp3
                         break;
                     case "*":
                         ukupno = rb1 * rb2;
-                        if (ukupno > 3999 || ukupno < 0)
+                        if (ukupno > 3999 || ukupno < 1)
                         {
                             textBox3.Text = ukupno.ToString();
                             label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
@@ -197,6 +197,24 @@ namespace WindowsFormsApp3
                             textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
                         }
                         break;
+                    case "/":
+                        ukupno = rb1 / rb2;
+                        int ostatak = rb1 - (ukupno * rb2);
+                        if (ukupno > 3999 || ukupno < 1)
+                        {
+                            textBox3.Text = "0" + " (ostatak: " + RimskiBroj.IntPaRimski(ostatak) + ")";
+                        }
+                        else
+                        {
+                            if(ostatak == 0)
+                            {
+                                textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
+                            }
+                            else textBox3.Text = RimskiBroj.IntPaRimski(ukupno) + " (ostatak: " + RimskiBroj.IntPaRimski(ostatak) + ")";
+                        }
+                        break;
+
+
                 }
 
             }
