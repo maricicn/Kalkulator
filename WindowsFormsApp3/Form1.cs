@@ -143,14 +143,18 @@ namespace WindowsFormsApp3
 
         private void button17_Click(object sender, EventArgs e)
         {
-            if (!RimskiBroj.ProveriRimski(textBox1.Text)) {
-                label2.Text = "Uneli ste nepostojeci rimski broj!";
+            if (!RimskiBroj.ProveriRimski(textBox1.Text) && !RimskiBroj.ProveriRimski(textBox2.Text)) {
+                label2.Text = "Broj 1 i Broj 2 su nepostojeci rimski brojevi!";
             }
-            if (!RimskiBroj.ProveriRimski(textBox2.Text))
+            if (!RimskiBroj.ProveriRimski(textBox2.Text) && RimskiBroj.ProveriRimski(textBox1.Text))
             {
-                label2.Text = "Uneli ste nepostojeci rimski broj!";
+                label2.Text = "Broj 2 je nepostojeci rimski broj!";
             }
-            if(RimskiBroj.ProveriRimski(textBox1.Text) && RimskiBroj.ProveriRimski(textBox2.Text))
+            if (RimskiBroj.ProveriRimski(textBox2.Text) && !RimskiBroj.ProveriRimski(textBox1.Text))
+            {
+                label2.Text = "Broj 1 je nepostojeci rimski broj!";
+            }
+            if (RimskiBroj.ProveriRimski(textBox1.Text) && RimskiBroj.ProveriRimski(textBox2.Text))
             {
                 int rb1 = RimskiBroj.RimskiPaInt(textBox1.Text);
                 int rb2 = RimskiBroj.RimskiPaInt(textBox2.Text);
@@ -217,6 +221,18 @@ namespace WindowsFormsApp3
         {
             operacija = "/";
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            label2.Text = "";
+            textBox3.Text = "";
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            label2.Text = "";
+            textBox3.Text = "";
+        }
     }
     class RimskiBroj
     {
@@ -235,10 +251,15 @@ namespace WindowsFormsApp3
             int prvi = 0;
             int drugi = 0;
             int rezultat = 0;
+            if (s == "")
+            {
+                return 0;
+            }
             while (tren < s.Length - 1)
             {
                 prvi = 0;
                 drugi = 0;
+                
                 switch (s[tren])
                 {
                     case 'I':
