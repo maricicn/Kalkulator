@@ -45,5 +45,95 @@ namespace WindowsFormsApp3
         {
 
         }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "I";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "I";
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "V";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "V";
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "X";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "X";
+            }
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "L";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "L";
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "C";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "C";
+            }
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "D";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "D";
+            }
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "M";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "M";
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+        }
     }
 }
