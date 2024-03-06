@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
@@ -224,37 +225,76 @@ namespace WindowsFormsApp3
             
         }
 
-        public static string Pomnozi (VelikiBroj a, VelikiBroj b)
+        public static string operator *(VelikiBroj a, VelikiBroj b)
         {
-            string broj1 = a.broj;
-            string broj2 = b.broj;
-            int[] rezultat = new int[broj1.Length + broj2.Length]; // rezultujući niz brojeva
-            for (int i = 0; i < broj1.Length + broj2.Length; i++)
+            if (a.broj == "0" || b.broj == "0") return "0";
+            if (a.Decimalan() && b.Decimalan())
             {
-                rezultat[i] = 0;
-            }
-
-            for (int i = broj1.Length - 1; i >= 0; i--)
-            {
-                // Iteracija unazad kroz drugi broj
-                for (int j = broj2.Length - 1; j >= 0; j--)
+                string broj1 = a.broj;
+                string broj2 = b.broj;
+                int mz1 = 0;
+                int mz2 = 0;
+                if (a.MestoZareza() != -1) { mz1 = a.MestoZareza(); broj1 = broj1.Replace(".", string.Empty); }
+                if (b.MestoZareza() != -1) { mz2 = b.MestoZareza(); broj2 = broj2.Replace(".", string.Empty); }
+                int ukupno = broj1.Length - mz1 + broj2.Length - mz2;
+                int[] rezultat = new int[broj1.Length + broj2.Length]; // rezultujući niz brojeva
+                for (int i = 0; i < broj1.Length + broj2.Length; i++)
                 {
-                    int mul = (broj1[i] - '0') * (broj2[j] - '0'); // Množenje cifara
-                    int suma = mul + rezultat[i + j + 1]; // Dodavanje proizvoda na odgovarajuće mesto u rezultatu
-                    rezultat[i + j] += suma / 10; // Dodavanje prenosne cifre na prethodnu poziciju
-                    rezultat[i + j + 1] = suma % 10; // Dodavanje ostataka na trenutnu poziciju
+                    rezultat[i] = 0;
                 }
-            }
 
-            // Konverzija rezultata u string
-            string rezultatString = "";
-            foreach (int num in rezultat)
+                for (int i = broj1.Length - 1; i >= 0; i--)
+                {
+                    // Iteracija unazad kroz drugi broj
+                    for (int j = broj2.Length - 1; j >= 0; j--)
+                    {
+                        int mul = (broj1[i] - '0') * (broj2[j] - '0'); // Množenje cifara
+                        int suma = mul + rezultat[i + j + 1]; // Dodavanje proizvoda na odgovarajuće mesto u rezultatu
+                        rezultat[i + j] += suma / 10; // Dodavanje prenosne cifre na prethodnu poziciju
+                        rezultat[i + j + 1] = suma % 10; // Dodavanje ostataka na trenutnu poziciju
+                    }
+                }
+
+                // Konverzija rezultata u string
+                string rezultatString = "";
+                foreach (int num in rezultat)
+                {
+                    if (!(rezultatString.Length == 0 && num == 0)) // Ignorisanje vodećih nula
+                        rezultatString += num;
+                }
+                int d = rezultatString.Length;
+                StringBuilder sb = new StringBuilder(rezultatString);
+                sb.Insert(d - ukupno, ".");
+                //return rezultatString.Length == 0 ? "0" : rezultatString; // Ako je rezultat prazan, vraćamo "0"
+                string rez = sb.ToString();
+                if (rez[0] == '.') rez = "0" + rez;
+                rez = rez.TrimEnd('0');
+                return rez;
+            }
+            if (!a.Decimalan() && !b.Decimalan())
             {
-                if (!(rezultatString.Length == 0 && num == 0)) // Ignorisanje vodećih nula
-                    rezultatString += num;
+                string broj1 = a.broj;
+                string broj2 = b.broj;
+                broj1 = broj1 + "." + "0";
+                broj2 = broj2 + "." + "0";
+                string rez = new VelikiBroj(broj1) * new VelikiBroj(broj2);
+                rez = rez.Replace(".", string.Empty);
+                return rez;
             }
-
-            return rezultatString.Length == 0 ? "0" : rezultatString; // Ako je rezultat prazan, vraćamo "0"
+            if(a.Decimalan() && !b.Decimalan())
+            {
+                string broj1 = a.broj;
+                string broj2 = b.broj;
+                broj2 = broj2 + ".";
+                return a * new VelikiBroj(broj2);
+            }
+            else
+            {
+                string broj1 = a.broj;
+                string broj2 = b.broj;
+                broj1 = broj1 + ".";
+                return new VelikiBroj(broj1) * b;
+            }
         }
     }
 }

@@ -307,6 +307,33 @@ namespace WindowsFormsApp3
                 textBox3.Text = prvi - drugi;
             }
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            VelikiBroj prvi = new VelikiBroj(textBox1.Text);
+            VelikiBroj drugi = new VelikiBroj(textBox2.Text);
+            if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom1 = prvi.broj.Replace("-", string.Empty);
+                string pom2 = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = (new VelikiBroj(pom1) * new VelikiBroj(pom2));
+            }
+            else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = "-" + (prvi * new VelikiBroj(pom));
+
+            }
+            else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+            {
+                string pom = prvi.broj.Replace("-", string.Empty);
+                textBox3.Text = "-" + (new VelikiBroj(pom) * drugi);
+            }
+            else
+            {
+                textBox3.Text = prvi * drugi;
+            }
+        }
     }
     class RimskiBroj
     {
