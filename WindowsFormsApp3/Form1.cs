@@ -251,6 +251,62 @@ namespace WindowsFormsApp3
             label2.Text = "";
             textBox3.Text = "";
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            VelikiBroj prvi = new VelikiBroj(textBox1.Text);
+            VelikiBroj drugi = new VelikiBroj(textBox2.Text);
+            if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom1 = prvi.broj.Replace("-", string.Empty);
+                string pom2 = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = "-" + (new VelikiBroj(pom1) + new VelikiBroj(pom2));
+            }
+            else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+            {
+                string pom = prvi.broj.Replace("-", string.Empty);
+                textBox3.Text = drugi - new VelikiBroj(pom);
+            }
+            else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = prvi - new VelikiBroj(pom);
+            }
+            else
+            {
+                textBox3.Text = prvi + drugi;
+            }
+            
+              
+            
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            VelikiBroj prvi = new VelikiBroj(textBox1.Text);
+            VelikiBroj drugi = new VelikiBroj(textBox2.Text);
+
+            if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom1 = prvi.broj.Replace("-", string.Empty);
+                string pom2 = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = (new VelikiBroj(pom2) - new VelikiBroj(pom1));
+            }
+            else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+            {
+                string pom = prvi.broj.Replace("-", string.Empty);
+                textBox3.Text = "-" + (new VelikiBroj(pom) + drugi);
+            }
+            else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = prvi + new VelikiBroj(pom);
+            }
+            else
+            {
+                textBox3.Text = prvi - drugi;
+            }
+        }
     }
     class RimskiBroj
     {
