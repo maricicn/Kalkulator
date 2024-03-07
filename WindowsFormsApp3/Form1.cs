@@ -21,7 +21,9 @@ namespace WindowsFormsApp3
         {
             InitializeComponent();
             form1instance = this;
-            grad = 1; //1 -> arapski brojevi, -1 -> rimski brojevi
+            grad = 1; //1 -> arapski brojevi, -1 -> rimski brojevi3
+            brojdcm.Visible = false;
+            brdcm.Visible = false;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -32,6 +34,8 @@ namespace WindowsFormsApp3
                 panel2.Visible = true;
                 pictureBox1.BackgroundImage = Properties.Resources.arapi;
                 pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+                brdcm.Visible = false;
+                brojdcm.Visible = false;
             }
             else
             {
@@ -240,6 +244,7 @@ namespace WindowsFormsApp3
                     case "+":
                         if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
                         {
+                            VelikiBroj a = new VelikiBroj(string.Empty);
                             string pom1 = prvi.broj.Replace("-", string.Empty);
                             string pom2 = drugi.broj.Replace("-", string.Empty);
                             textBox3.Text = "-" + (new VelikiBroj(pom1) + new VelikiBroj(pom2));
@@ -335,21 +340,29 @@ namespace WindowsFormsApp3
         private void button13_Click(object sender, EventArgs e)
         {
             operacija = "+";
+            brdcm.Visible = false;
+            brojdcm.Visible = false;
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             operacija = "-";
+            brdcm.Visible = false;
+            brojdcm.Visible = false;
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             operacija = "*";
+            brdcm.Visible = false;
+            brojdcm.Visible = false;
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
             operacija = "/";
+            brdcm.Visible = true;
+            brojdcm.Visible = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

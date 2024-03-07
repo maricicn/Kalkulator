@@ -38,9 +38,19 @@ namespace WindowsFormsApp3
             if (MestoZareza() != -1) return broj.Substring(MestoZareza() + 1, broj.Length - MestoZareza() -1);
             else return "0";
         }
-        public string DodajZareze()
+        public string DodajZareze(string a)
         {
-            return string.Empty;
+            int mz1 = 0;
+            if (a.IndexOf('.') != -1) mz1 = a.IndexOf('.');
+            else mz1 = a.Length;
+            string pom1 = a;
+            for(int i = a.Length; i >= 0; i = i - 3)
+            {
+                StringBuilder sb = new StringBuilder(pom1);
+                sb.Insert('.', i);
+                pom1 = sb.ToString();
+            }
+            return pom1;
         }
         public static int Uporedi(VelikiBroj a, VelikiBroj b) //Uporedjuje dva cela broja
         {
@@ -296,7 +306,7 @@ namespace WindowsFormsApp3
                 if (a.MestoZareza() != -1) { mz1 = a.MestoZareza(); broj1 = broj1.Replace(".", string.Empty); }
                 if (b.MestoZareza() != -1) { mz2 = b.MestoZareza(); broj2 = broj2.Replace(".", string.Empty); }
                 int ukupno = broj1.Length - mz1 + broj2.Length - mz2;
-                int[] rezultat = new int[broj1.Length + broj2.Length]; // rezultujući niz brojeva
+                int[] rezultat = new int[broj1.Length + broj2.Length]; 
                 for (int i = 0; i < broj1.Length + broj2.Length; i++)
                 {
                     rezultat[i] = 0;
@@ -304,27 +314,26 @@ namespace WindowsFormsApp3
 
                 for (int i = broj1.Length - 1; i >= 0; i--)
                 {
-                    // Iteracija unazad kroz drugi broj
+                    
                     for (int j = broj2.Length - 1; j >= 0; j--)
                     {
-                        int mul = (broj1[i] - '0') * (broj2[j] - '0'); // Množenje cifara
-                        int suma = mul + rezultat[i + j + 1]; // Dodavanje proizvoda na odgovarajuće mesto u rezultatu
-                        rezultat[i + j] += suma / 10; // Dodavanje prenosne cifre na prethodnu poziciju
-                        rezultat[i + j + 1] = suma % 10; // Dodavanje ostataka na trenutnu poziciju
+                        int mul = (broj1[i] - '0') * (broj2[j] - '0'); 
+                        int suma = mul + rezultat[i + j + 1]; 
+                        rezultat[i + j] += suma / 10;
+                        rezultat[i + j + 1] = suma % 10; 
                     }
                 }
 
-                // Konverzija rezultata u string
+                
                 string rezultatString = "";
                 foreach (int num in rezultat)
                 {
-                    if (!(rezultatString.Length == 0 && num == 0)) // Ignorisanje vodećih nula
+                    if (!(rezultatString.Length == 0 && num == 0)) 
                         rezultatString += num;
                 }
                 int d = rezultatString.Length;
                 StringBuilder sb = new StringBuilder(rezultatString);
                 sb.Insert(d - ukupno, ".");
-                //return rezultatString.Length == 0 ? "0" : rezultatString; // Ako je rezultat prazan, vraćamo "0"
                 string rez = sb.ToString();
                 if (rez[0] == '.') rez = "0" + rez;
                 rez = rez.TrimEnd('0');
