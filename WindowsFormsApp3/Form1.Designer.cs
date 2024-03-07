@@ -229,8 +229,9 @@ namespace WindowsFormsApp3
             // 
             this.textBox3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(79, 198);
+            this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(387, 25);
+            this.textBox3.Size = new System.Drawing.Size(387, 48);
             this.textBox3.TabIndex = 16;
             // 
             // label3
