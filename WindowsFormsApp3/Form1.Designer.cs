@@ -67,9 +67,9 @@ namespace WindowsFormsApp3
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.brdcm = new System.Windows.Forms.TextBox();
+            this.brojdcm = new System.Windows.Forms.Label();
+            this.button20 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -111,6 +111,7 @@ namespace WindowsFormsApp3
             this.button1.TabIndex = 4;
             this.button1.Text = "7";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -120,6 +121,7 @@ namespace WindowsFormsApp3
             this.button2.TabIndex = 5;
             this.button2.Text = "8";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -129,6 +131,7 @@ namespace WindowsFormsApp3
             this.button3.TabIndex = 6;
             this.button3.Text = "9";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -138,6 +141,7 @@ namespace WindowsFormsApp3
             this.button4.TabIndex = 7;
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -147,6 +151,7 @@ namespace WindowsFormsApp3
             this.button5.TabIndex = 8;
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -156,6 +161,7 @@ namespace WindowsFormsApp3
             this.button6.TabIndex = 9;
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -165,6 +171,7 @@ namespace WindowsFormsApp3
             this.button7.TabIndex = 10;
             this.button7.Text = "1";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -174,6 +181,7 @@ namespace WindowsFormsApp3
             this.button8.TabIndex = 11;
             this.button8.Text = "2";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -183,6 +191,7 @@ namespace WindowsFormsApp3
             this.button9.TabIndex = 12;
             this.button9.Text = "3";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -192,6 +201,7 @@ namespace WindowsFormsApp3
             this.button10.TabIndex = 13;
             this.button10.Text = "0";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -201,6 +211,7 @@ namespace WindowsFormsApp3
             this.button11.TabIndex = 14;
             this.button11.Text = "+/-";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -210,6 +221,7 @@ namespace WindowsFormsApp3
             this.button12.TabIndex = 15;
             this.button12.Text = ".";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // textBox3
             // 
@@ -397,7 +409,7 @@ namespace WindowsFormsApp3
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(162, 240);
+            this.panel1.Location = new System.Drawing.Point(162, 234);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(169, 221);
             this.panel1.TabIndex = 33;
@@ -411,7 +423,7 @@ namespace WindowsFormsApp3
             this.panel2.Controls.Add(this.btnX);
             this.panel2.Controls.Add(this.btnV);
             this.panel2.Controls.Add(this.btnI);
-            this.panel2.Location = new System.Drawing.Point(133, 231);
+            this.panel2.Location = new System.Drawing.Point(133, 234);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(225, 230);
             this.panel2.TabIndex = 34;
@@ -457,35 +469,34 @@ namespace WindowsFormsApp3
             this.label2.Size = new System.Drawing.Size(0, 24);
             this.label2.TabIndex = 38;
             // 
-            // label5
+            // brdcm
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(537, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 39;
-            this.label5.Text = "label5";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.brdcm.Location = new System.Drawing.Point(569, 82);
+            this.brdcm.Name = "brdcm";
+            this.brdcm.Size = new System.Drawing.Size(63, 20);
+            this.brdcm.TabIndex = 43;
+            this.brdcm.Text = "20";
+            this.brdcm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label6
+            // brojdcm
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(526, 121);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "label6";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.brojdcm.AutoSize = true;
+            this.brojdcm.Location = new System.Drawing.Point(550, 66);
+            this.brojdcm.Name = "brojdcm";
+            this.brojdcm.Size = new System.Drawing.Size(111, 13);
+            this.brojdcm.TabIndex = 44;
+            this.brojdcm.Text = "Unesite broj decimala ";
             // 
-            // label7
+            // button20
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(556, 37);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "label7";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.Location = new System.Drawing.Point(490, 54);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(43, 37);
+            this.button20.TabIndex = 46;
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click_1);
             // 
             // Form1
             // 
@@ -493,15 +504,15 @@ namespace WindowsFormsApp3
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
             this.ClientSize = new System.Drawing.Size(697, 563);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.button20);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.brojdcm);
+            this.Controls.Add(this.brdcm);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
@@ -564,9 +575,9 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox brdcm;
+        private System.Windows.Forms.Label brojdcm;
+        private System.Windows.Forms.Button button20;
     }
 }
 

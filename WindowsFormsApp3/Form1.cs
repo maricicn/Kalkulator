@@ -15,9 +15,13 @@ namespace WindowsFormsApp3
     public partial class Form1 : Form
     {
         public string operacija;
+        public static Form1 form1instance;
+        public int grad;
         public Form1()
         {
             InitializeComponent();
+            form1instance = this;
+            grad = 1; //1 -> arapski brojevi, -1 -> rimski brojevi
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -36,6 +40,12 @@ namespace WindowsFormsApp3
                 pictureBox1.BackgroundImage = Properties.Resources.koloseum;
                 pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             }
+
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+            textBox3.Text = string.Empty;
+            operacija = string.Empty;
+            grad = grad * (-1);
             
         }
 
@@ -143,81 +153,183 @@ namespace WindowsFormsApp3
 
         private void button17_Click(object sender, EventArgs e)
         {
-            if (!RimskiBroj.ProveriRimski(textBox1.Text) && !RimskiBroj.ProveriRimski(textBox2.Text)) {
-                label2.Text = "Broj 1 i Broj 2 su nepostojeci rimski brojevi!";
-            }
-            if (!RimskiBroj.ProveriRimski(textBox2.Text) && RimskiBroj.ProveriRimski(textBox1.Text))
+            if(grad == -1)
             {
-                label2.Text = "Broj 2 je nepostojeci rimski broj!";
-            }
-            if (RimskiBroj.ProveriRimski(textBox2.Text) && !RimskiBroj.ProveriRimski(textBox1.Text))
-            {
-                label2.Text = "Broj 1 je nepostojeci rimski broj!";
-            }
-            if (RimskiBroj.ProveriRimski(textBox1.Text) && RimskiBroj.ProveriRimski(textBox2.Text))
-            {
-                int rb1 = RimskiBroj.RimskiPaInt(textBox1.Text);
-                int rb2 = RimskiBroj.RimskiPaInt(textBox2.Text);
-                int ukupno = 0;
-                switch (operacija)
+                if (!RimskiBroj.ProveriRimski(textBox1.Text) && !RimskiBroj.ProveriRimski(textBox2.Text))
                 {
-                    case "+": 
-                        ukupno = rb1 + rb2;
-                        if(ukupno > 3999 || ukupno < 1)
-                        {
-                            textBox3.Text = ukupno.ToString();
-                            label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
-                        }
-                        else 
-                        {
-                            textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
-                        }
-                        break;
-                    case "-":
-                        ukupno = rb1 - rb2;
-                        if (ukupno > 3999 || ukupno < 1)
-                        {
-                            textBox3.Text = ukupno.ToString();
-                            label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
-                        }
-                        else
-                        {
-                            textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
-                        }
-                        break;
-                    case "*":
-                        ukupno = rb1 * rb2;
-                        if (ukupno > 3999 || ukupno < 1)
-                        {
-                            textBox3.Text = ukupno.ToString();
-                            label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
-                        }
-                        else
-                        {
-                            textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
-                        }
-                        break;
-                    case "/":
-                        ukupno = rb1 / rb2;
-                        int ostatak = rb1 - (ukupno * rb2);
-                        if (ukupno > 3999 || ukupno < 1)
-                        {
-                            textBox3.Text = "0" + " (ostatak: " + RimskiBroj.IntPaRimski(ostatak) + ")";
-                        }
-                        else
-                        {
-                            if(ostatak == 0)
+                    textBox3.Text = "Broj 1 i Broj 2 su nepostojeci rimski brojevi!";
+                }
+                if (!RimskiBroj.ProveriRimski(textBox2.Text) && RimskiBroj.ProveriRimski(textBox1.Text))
+                {
+                    textBox3.Text = "Broj 2 je nepostojeci rimski broj!";
+                }
+                if (RimskiBroj.ProveriRimski(textBox2.Text) && !RimskiBroj.ProveriRimski(textBox1.Text))
+                {
+                    textBox3.Text = "Broj 1 je nepostojeci rimski broj!";
+                }
+                if (RimskiBroj.ProveriRimski(textBox1.Text) && RimskiBroj.ProveriRimski(textBox2.Text))
+                {
+                    int rb1 = RimskiBroj.RimskiPaInt(textBox1.Text);
+                    int rb2 = RimskiBroj.RimskiPaInt(textBox2.Text);
+                    int ukupno = 0;
+                    switch (operacija)
+                    {
+                        case "+":
+                            ukupno = rb1 + rb2;
+                            if (ukupno > 3999 || ukupno < 1)
+                            {
+                                textBox3.Text = ukupno.ToString();
+                                label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
+                            }
+                            else
                             {
                                 textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
                             }
-                            else textBox3.Text = RimskiBroj.IntPaRimski(ukupno) + " (ostatak: " + RimskiBroj.IntPaRimski(ostatak) + ")";
-                        }
-                        break;
-
+                            break;
+                        case "-":
+                            ukupno = rb1 - rb2;
+                            if (ukupno > 3999 || ukupno < 1)
+                            {
+                                textBox3.Text = ukupno.ToString();
+                                label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
+                            }
+                            else
+                            {
+                                textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
+                            }
+                            break;
+                        case "*":
+                            ukupno = rb1 * rb2;
+                            if (ukupno > 3999 || ukupno < 1)
+                            {
+                                textBox3.Text = ukupno.ToString();
+                                label2.Text = "Rezultat se ne moze predstaviti kao rimski broj!";
+                            }
+                            else
+                            {
+                                textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
+                            }
+                            break;
+                        case "/":
+                            ukupno = rb1 / rb2;
+                            int ostatak = rb1 - (ukupno * rb2);
+                            if (ukupno > 3999 || ukupno < 1)
+                            {
+                                textBox3.Text = "0" + " (ostatak: " + RimskiBroj.IntPaRimski(ostatak) + ")";
+                            }
+                            else
+                            {
+                                if (ostatak == 0)
+                                {
+                                    textBox3.Text = RimskiBroj.IntPaRimski(ukupno);
+                                }
+                                else textBox3.Text = RimskiBroj.IntPaRimski(ukupno) + " (ostatak: " + RimskiBroj.IntPaRimski(ostatak) + ")";
+                            }
+                            break;
+                    }
 
                 }
-
+                
             }
+            else
+            {
+                VelikiBroj prvi = new VelikiBroj(textBox1.Text);
+                VelikiBroj drugi = new VelikiBroj(textBox2.Text);
+                switch (operacija)
+                {
+                    case "+":
+                        if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom1 = prvi.broj.Replace("-", string.Empty);
+                            string pom2 = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = "-" + (new VelikiBroj(pom1) + new VelikiBroj(pom2));
+                        }
+                        else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+                        {
+                            string pom = prvi.broj.Replace("-", string.Empty);
+                            textBox3.Text = drugi - new VelikiBroj(pom);
+                        }
+                        else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = prvi - new VelikiBroj(pom);
+                        }
+                        else
+                        {
+                            textBox3.Text = prvi + drugi;
+                        }
+                        break;
+                    case "-":
+                        if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom1 = prvi.broj.Replace("-", string.Empty);
+                            string pom2 = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = (new VelikiBroj(pom2) - new VelikiBroj(pom1));
+                        }
+                        else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+                        {
+                            string pom = prvi.broj.Replace("-", string.Empty);
+                            textBox3.Text = "-" + (new VelikiBroj(pom) + drugi);
+                        }
+                        else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = prvi + new VelikiBroj(pom);
+                        }
+                        else
+                        {
+                            textBox3.Text = prvi - drugi;
+                        }
+                        break;
+                    case "*":
+                        if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom1 = prvi.broj.Replace("-", string.Empty);
+                            string pom2 = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = (new VelikiBroj(pom1) * new VelikiBroj(pom2));
+                        }
+                        else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = "-" + (prvi * new VelikiBroj(pom));
+
+                        }
+                        else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+                        {
+                            string pom = prvi.broj.Replace("-", string.Empty);
+                            textBox3.Text = "-" + (new VelikiBroj(pom) * drugi);
+                        }
+                        else
+                        {
+                            textBox3.Text = prvi * drugi;
+                        }
+                        break;
+                    case "/":
+                        if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom1 = prvi.broj.Replace("-", string.Empty);
+                            string pom2 = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = (new VelikiBroj(pom1) / new VelikiBroj(pom2));
+                        }
+                        else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+                        {
+                            string pom = drugi.broj.Replace("-", string.Empty);
+                            textBox3.Text = "-" + (prvi / new VelikiBroj(pom));
+
+                        }
+                        else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+                        {
+                            string pom = prvi.broj.Replace("-", string.Empty);
+                            textBox3.Text = "-" + (new VelikiBroj(pom) / drugi);
+                        }
+                        else
+                        {
+                            textBox3.Text = prvi / drugi;
+                        }
+                        break;
+                }
+            }
+
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -256,26 +368,7 @@ namespace WindowsFormsApp3
         {
             VelikiBroj prvi = new VelikiBroj(textBox1.Text);
             VelikiBroj drugi = new VelikiBroj(textBox2.Text);
-            if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
-            {
-                string pom1 = prvi.broj.Replace("-", string.Empty);
-                string pom2 = drugi.broj.Replace("-", string.Empty);
-                textBox3.Text = "-" + (new VelikiBroj(pom1) + new VelikiBroj(pom2));
-            }
-            else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
-            {
-                string pom = prvi.broj.Replace("-", string.Empty);
-                textBox3.Text = drugi - new VelikiBroj(pom);
-            }
-            else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
-            {
-                string pom = drugi.broj.Replace("-", string.Empty);
-                textBox3.Text = prvi - new VelikiBroj(pom);
-            }
-            else
-            {
-                textBox3.Text = prvi + drugi;
-            }
+            
             
               
             
@@ -332,6 +425,203 @@ namespace WindowsFormsApp3
             else
             {
                 textBox3.Text = prvi * drugi;
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            VelikiBroj prvi = new VelikiBroj(textBox1.Text);
+            VelikiBroj drugi = new VelikiBroj(textBox2.Text);
+            if ((prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom1 = prvi.broj.Replace("-", string.Empty);
+                string pom2 = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = (new VelikiBroj(pom1) / new VelikiBroj(pom2));
+            }
+            else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
+            {
+                string pom = drugi.broj.Replace("-", string.Empty);
+                textBox3.Text = "-" + (prvi / new VelikiBroj(pom));
+
+            }
+            else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
+            {
+                string pom = prvi.broj.Replace("-", string.Empty);
+                textBox3.Text = "-" + (new VelikiBroj(pom) / drugi);
+            }
+            else
+            {
+                textBox3.Text = prvi / drugi;
+            }
+        }
+
+        private void button20_Click_1(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked && (textBox1.Text != string.Empty))
+            {
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
+            if(radioButton2.Checked && (textBox2.Text != string.Empty))
+            {
+                textBox2.Text = textBox2.Text.Remove(textBox2.Text.Length - 1);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "1";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "1";
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "2";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "2";
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "3";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "3";
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "0";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "0";
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "6";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "6";
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "5";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "5";
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "4";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "4";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "7";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "7";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "8";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "8";
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + "9";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + "9";
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                textBox1.Text = textBox1.Text + ".";
+            }
+            if (radioButton2.Checked)
+            {
+                textBox2.Text = textBox2.Text + ".";
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                if (textBox1.Text[0] == '-')
+                {
+                    textBox1.Text = textBox1.Text.Remove(0,1);
+                }
+                else
+                {
+                    textBox1.Text = "-" + textBox1.Text;
+                }
+            }
+            if (radioButton2.Checked)
+            {
+                if (textBox2.Text[0] == '-')
+                {
+                    textBox2.Text = textBox2.Text.Remove(0, 1);
+                }
+                else
+                {
+                    textBox2.Text = "-" + textBox2.Text;
+                }
             }
         }
     }
