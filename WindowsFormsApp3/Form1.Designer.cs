@@ -309,7 +309,7 @@ namespace WindowsFormsApp3
             // 
             this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button18.ForeColor = System.Drawing.Color.DarkOrange;
-            this.button18.Location = new System.Drawing.Point(373, 355);
+            this.button18.Location = new System.Drawing.Point(380, 331);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(36, 36);
             this.button18.TabIndex = 23;
@@ -412,7 +412,7 @@ namespace WindowsFormsApp3
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(154, 284);
+            this.panel1.Location = new System.Drawing.Point(161, 260);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(169, 221);
             this.panel1.TabIndex = 33;
@@ -426,7 +426,7 @@ namespace WindowsFormsApp3
             this.panel2.Controls.Add(this.btnX);
             this.panel2.Controls.Add(this.btnV);
             this.panel2.Controls.Add(this.btnI);
-            this.panel2.Location = new System.Drawing.Point(125, 284);
+            this.panel2.Location = new System.Drawing.Point(132, 260);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(225, 230);
             this.panel2.TabIndex = 34;
@@ -467,7 +467,7 @@ namespace WindowsFormsApp3
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(92, 490);
+            this.label2.Location = new System.Drawing.Point(99, 512);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 24);
             this.label2.TabIndex = 38;

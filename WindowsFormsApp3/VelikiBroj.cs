@@ -41,15 +41,14 @@ namespace WindowsFormsApp3
         public string DodajZareze(string a)
         {
             int mz1 = 0;
-            if (a.IndexOf('.') != -1) mz1 = a.IndexOf('.');
+            if (a.IndexOf('.') != -1) mz1 = a.IndexOf('.') ;
             else mz1 = a.Length;
-            string pom1 = a;
-            for(int i = a.Length; i >= 0; i = i - 3)
+            StringBuilder sb = new StringBuilder(a);
+            for (int i = mz1 - 3; i > 0; i = i - 3)
             {
-                StringBuilder sb = new StringBuilder(pom1);
-                sb.Insert('.', i);
-                pom1 = sb.ToString();
+                sb.Insert(i, ',');
             }
+            string pom1 = sb.ToString();
             return pom1;
         }
         public static int Uporedi(VelikiBroj a, VelikiBroj b) //Uporedjuje dva cela broja

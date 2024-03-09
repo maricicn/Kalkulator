@@ -247,21 +247,21 @@ namespace WindowsFormsApp3
                             VelikiBroj a = new VelikiBroj(string.Empty);
                             string pom1 = prvi.broj.Replace("-", string.Empty);
                             string pom2 = drugi.broj.Replace("-", string.Empty);
-                            textBox3.Text = "-" + (new VelikiBroj(pom1) + new VelikiBroj(pom2));
+                            textBox3.Text = "-" + prvi.DodajZareze(new VelikiBroj(pom1) + new VelikiBroj(pom2));
                         }
                         else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
                         {
                             string pom = prvi.broj.Replace("-", string.Empty);
-                            textBox3.Text = drugi - new VelikiBroj(pom);
+                            textBox3.Text = prvi.DodajZareze(drugi - new VelikiBroj(pom));
                         }
                         else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
                         {
                             string pom = drugi.broj.Replace("-", string.Empty);
-                            textBox3.Text = prvi - new VelikiBroj(pom);
+                            textBox3.Text = prvi.DodajZareze(prvi - new VelikiBroj(pom));
                         }
                         else
                         {
-                            textBox3.Text = prvi + drugi;
+                            textBox3.Text = prvi.DodajZareze(prvi + drugi);
                         }
                         break;
                     case "-":
@@ -269,21 +269,21 @@ namespace WindowsFormsApp3
                         {
                             string pom1 = prvi.broj.Replace("-", string.Empty);
                             string pom2 = drugi.broj.Replace("-", string.Empty);
-                            textBox3.Text = (new VelikiBroj(pom2) - new VelikiBroj(pom1));
+                            textBox3.Text = prvi.DodajZareze(new VelikiBroj(pom2) - new VelikiBroj(pom1));
                         }
                         else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
                         {
                             string pom = prvi.broj.Replace("-", string.Empty);
-                            textBox3.Text = "-" + (new VelikiBroj(pom) + drugi);
+                            textBox3.Text = "-" + prvi.DodajZareze(new VelikiBroj(pom) + drugi);
                         }
                         else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
                         {
                             string pom = drugi.broj.Replace("-", string.Empty);
-                            textBox3.Text = prvi + new VelikiBroj(pom);
+                            textBox3.Text = prvi.DodajZareze(prvi + new VelikiBroj(pom));
                         }
                         else
                         {
-                            textBox3.Text = prvi - drugi;
+                            textBox3.Text = prvi.DodajZareze(prvi - drugi);
                         }
                         break;
                     case "*":
@@ -291,7 +291,7 @@ namespace WindowsFormsApp3
                         {
                             string pom1 = prvi.broj.Replace("-", string.Empty);
                             string pom2 = drugi.broj.Replace("-", string.Empty);
-                            textBox3.Text = (new VelikiBroj(pom1) * new VelikiBroj(pom2));
+                            textBox3.Text = prvi.DodajZareze(new VelikiBroj(pom1) * new VelikiBroj(pom2));
                         }
                         else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
                         {
@@ -302,11 +302,11 @@ namespace WindowsFormsApp3
                         else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
                         {
                             string pom = prvi.broj.Replace("-", string.Empty);
-                            textBox3.Text = "-" + (new VelikiBroj(pom) * drugi);
+                            textBox3.Text = "-" + prvi.DodajZareze(new VelikiBroj(pom) * drugi);
                         }
                         else
                         {
-                            textBox3.Text = prvi * drugi;
+                            textBox3.Text = prvi.DodajZareze(prvi * drugi);
                         }
                         break;
                     case "/":
@@ -314,22 +314,22 @@ namespace WindowsFormsApp3
                         {
                             string pom1 = prvi.broj.Replace("-", string.Empty);
                             string pom2 = drugi.broj.Replace("-", string.Empty);
-                            textBox3.Text = (new VelikiBroj(pom1) / new VelikiBroj(pom2));
+                            textBox3.Text = prvi.DodajZareze(new VelikiBroj(pom1) / new VelikiBroj(pom2));
                         }
                         else if (!(prvi.broj[0] == 45) && (drugi.broj[0] == 45))
                         {
                             string pom = drugi.broj.Replace("-", string.Empty);
-                            textBox3.Text = "-" + (prvi / new VelikiBroj(pom));
+                            textBox3.Text = "-" + prvi.DodajZareze(prvi / new VelikiBroj(pom));
 
                         }
                         else if ((prvi.broj[0] == 45) && !(drugi.broj[0] == 45))
                         {
                             string pom = prvi.broj.Replace("-", string.Empty);
-                            textBox3.Text = "-" + (new VelikiBroj(pom) / drugi);
+                            textBox3.Text = "-" + prvi.DodajZareze(new VelikiBroj(pom) / drugi);
                         }
                         else
                         {
-                            textBox3.Text = prvi / drugi;
+                            textBox3.Text = prvi.DodajZareze(prvi / drugi);
                         }
                         break;
                 }
@@ -361,8 +361,12 @@ namespace WindowsFormsApp3
         private void button16_Click(object sender, EventArgs e)
         {
             operacija = "/";
-            brdcm.Visible = true;
-            brojdcm.Visible = true;
+            if(grad == 1) 
+            {
+                brdcm.Visible = true;
+                brojdcm.Visible = true;
+            }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
